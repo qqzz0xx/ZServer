@@ -20,4 +20,8 @@ public class MainServerHandler  extends ChannelInboundHandlerAdapter{
         super.exceptionCaught(ctx, cause);
         ctx.close();
     }
+
+    public static MainServerHandler Default() {
+        return new MainServerHandler();
+    }
 }

@@ -41,6 +41,8 @@ public class MainServer {
                 p.addLast(new EchoHandler());
                 p.addLast(LengthDecoder.Default());
                 p.addLast(MessageDecoder.Default());
+                p.addLast(MessageEncoder.Default());
+                p.addLast(MainServerHandler.Default());
 
             }
         });
