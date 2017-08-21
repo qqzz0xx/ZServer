@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+message Msg
+{
+    optional MsgId msgid = 1;
+    optional int32 seqid = 2;
+    optional Body body = 3;
+}
+
+
+enum MsgId
+{
+    MSG_ID_REQ = 1;
+    MSG_ID_RES = 2;
+}
+
+
+message Body
+{
+
+}
