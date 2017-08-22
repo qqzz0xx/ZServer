@@ -1,5 +1,5 @@
 import com.zserver.client.Client;
-import com.zserver.com.zserver.server.MainServer;
+import com.zserver.server.MainServer;
 import com.zserver.helper.ByteHelper;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.zserver.proto.MsgOuterClass;

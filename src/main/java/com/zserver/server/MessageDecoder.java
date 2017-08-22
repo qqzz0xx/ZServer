@@ -1,4 +1,4 @@
-package com.zserver.com.zserver.server;
+package com.zserver.server;
 
 import com.zserver.proto.MsgOuterClass;
 import io.netty.buffer.ByteBuf;

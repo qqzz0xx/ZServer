@@ -1,4 +1,4 @@
-package com.zserver.com.zserver.server;
+package com.zserver.server;
 
 import com.zserver.helper.ByteHelper;
 import com.zserver.proto.MsgOuterClass;

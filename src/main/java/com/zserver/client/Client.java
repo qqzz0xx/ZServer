@@ -1,8 +1,8 @@
 package com.zserver.client;
 
-import com.zserver.com.zserver.server.LengthDecoder;
-import com.zserver.com.zserver.server.MessageDecoder;
-import com.zserver.com.zserver.server.MessageEncoder;
+import com.zserver.server.LengthDecoder;
+import com.zserver.server.MessageDecoder;
+import com.zserver.server.MessageEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;

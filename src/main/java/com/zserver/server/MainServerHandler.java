@@ -1,13 +1,12 @@
-package com.zserver.com.zserver.server;
+package com.zserver.server;
 
-import com.zserver.helper.MessageHelper;
+import com.zserver.mgr.MessageMgr;
 import com.zserver.mgr.MgrLocation;
 import com.zserver.proto.MsgOuterClass;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelId;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import sun.plugin2.message.Message;
 
 import java.util.Map;
 
@@ -48,8 +47,8 @@ public class MainServerHandler  extends ChannelInboundHandlerAdapter{
 
         MsgOuterClass.Msg.Builder builder = MsgOuterClass.Msg.newBuilder();
         builder.setMsgid(MsgOuterClass.MsgId.MSG_ID_CONNET_RES);
-        MessageHelper.Send(id, builder.build());
 
+        MessageMgr.Send(id, builder.build());
     }
 
     @Override

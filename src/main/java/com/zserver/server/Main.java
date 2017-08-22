@@ -1,4 +1,4 @@
-package com.zserver.com.zserver.server;
+package com.zserver.server;
 
 /**
  * Created by ZZZ on 2017/8/21.
