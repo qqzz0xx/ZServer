@@ -1,1 +1,1 @@
-d:\branch\ThirdParts\google_proto_files\protoc.exe --java_out=. ./msg.proto
+d:\branch\ThirdParts\google_proto_files\protoc.exe --java_out=../java ./msg.proto

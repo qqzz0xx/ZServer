@@ -1,4 +1,4 @@
-syntax = "proto2";
+package com.zserver.proto;
 
 message Msg
 {
@@ -10,12 +10,30 @@ message Msg
 
 enum MsgId
 {
-    MSG_ID_REQ = 1;
-    MSG_ID_RES = 2;
+    MSG_ID_REQ = -1;
+    MSG_ID_RES = -2;
+
+    MSG_ID_CONNET_REQ = 1;
+    MSG_ID_CONNET_RES = 2;
+    MSG_ID_HEART_REQ = 3;
+    MSG_ID_HEART_RES = 4;
 }
 
 
 message Body
 {
-
+    optional ConnetReq connetReq = 1;
+    optional ConnetRes connetRes = 2;
 }
+
+message ConnetReq
+{
+    optional int32 t1 = 1;
+    optional int32 t2 = 2;
+}
+
+message ConnetRes
+{
+    optional int32 platform = 1;
+}
+
