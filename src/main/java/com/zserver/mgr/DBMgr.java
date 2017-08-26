@@ -38,9 +38,7 @@ public class DBMgr {
     }
 
     public BagBase FindBagBase(long roleid) {
-        FindIterable<Document> result = client.FindCollection("bag").find(eq("roleid", roleid));
-        if (result == null) return null;
-        return DBClient.DocToBean(result.first(), BagBase.class);
+        return FindTable(roleid, "roleid", "bag", BagBase.class);
     }
 
     public void InsertRole(RoleBase roleBase) {
