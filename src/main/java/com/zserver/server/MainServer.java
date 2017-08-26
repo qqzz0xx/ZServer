@@ -26,6 +26,9 @@ public class MainServer {
         m_Port = port;
     }
 
+    public void Init() {
+
+    }
 
     public void Run()
     {

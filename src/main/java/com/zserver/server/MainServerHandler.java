@@ -15,16 +15,18 @@ import java.util.Map;
  */
 public class MainServerHandler  extends ChannelInboundHandlerAdapter{
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        super.channelRead(ctx, msg);
+    public void channelRead(ChannelHandlerContext ctx, Object obj) throws Exception {
+        super.channelRead(ctx, obj);
 
-        MsgOuterClass.Msg req = (MsgOuterClass.Msg) msg;
+        MsgOuterClass.Msg msg = (MsgOuterClass.Msg) obj;
 
-        System.out.println(req);
+        System.out.println(msg);
 
         ChannelId id = ctx.channel().id();
 
-        switch (req.getMsgid())
+        MgrLocation.INST.getMessageMgr().Dispatch(new MsgEvent(id, msg));
+
+        switch (msg.getMsgid())
         {
             case MSG_ID_CONNET_REQ:
                 Map<ChannelId, Channel> map = MgrLocation.INST.getChannelMgr().getChannelMap();
@@ -39,7 +41,6 @@ public class MainServerHandler  extends ChannelInboundHandlerAdapter{
                 break;
 
         }
-
 
     }
 

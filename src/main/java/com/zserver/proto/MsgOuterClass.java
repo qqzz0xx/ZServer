@@ -37,6 +37,14 @@ public final class MsgOuterClass {
      * <code>MSG_ID_HEART_RES = 4;</code>
      */
     MSG_ID_HEART_RES(5, 4),
+    /**
+     * <code>MSG_ID_LOGIN_REQ = 5;</code>
+     */
+    MSG_ID_LOGIN_REQ(6, 5),
+    /**
+     * <code>MSG_ID_LOGIN_RES = 6;</code>
+     */
+    MSG_ID_LOGIN_RES(7, 6),
     ;
 
     /**
@@ -63,6 +71,14 @@ public final class MsgOuterClass {
      * <code>MSG_ID_HEART_RES = 4;</code>
      */
     public static final int MSG_ID_HEART_RES_VALUE = 4;
+    /**
+     * <code>MSG_ID_LOGIN_REQ = 5;</code>
+     */
+    public static final int MSG_ID_LOGIN_REQ_VALUE = 5;
+    /**
+     * <code>MSG_ID_LOGIN_RES = 6;</code>
+     */
+    public static final int MSG_ID_LOGIN_RES_VALUE = 6;
 
 
     public final int getNumber() {
@@ -77,6 +93,8 @@ public final class MsgOuterClass {
         case 2: return MSG_ID_CONNET_RES;
         case 3: return MSG_ID_HEART_REQ;
         case 4: return MSG_ID_HEART_RES;
+        case 5: return MSG_ID_LOGIN_REQ;
+        case 6: return MSG_ID_LOGIN_RES;
         default: return null;
       }
     }
@@ -319,6 +337,12 @@ public final class MsgOuterClass {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (hasBody()) {
+        if (!getBody().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -548,6 +572,11 @@ public final class MsgOuterClass {
       }
 
       public final boolean isInitialized() {
+        if (hasBody()) {
+          if (!getBody().isInitialized()) {
+            return false;
+          }
+        }
         return true;
       }
 
@@ -832,6 +861,32 @@ public final class MsgOuterClass {
      * <code>optional .com.zserver.proto.ConnetRes connetRes = 2;</code>
      */
     com.zserver.proto.MsgOuterClass.ConnetResOrBuilder getConnetResOrBuilder();
+
+    /**
+     * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+     */
+    boolean hasLoginReq();
+    /**
+     * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+     */
+    com.zserver.proto.MsgOuterClass.LoginReq getLoginReq();
+    /**
+     * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+     */
+    com.zserver.proto.MsgOuterClass.LoginReqOrBuilder getLoginReqOrBuilder();
+
+    /**
+     * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+     */
+    boolean hasLoginRes();
+    /**
+     * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+     */
+    com.zserver.proto.MsgOuterClass.LoginRes getLoginRes();
+    /**
+     * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+     */
+    com.zserver.proto.MsgOuterClass.LoginResOrBuilder getLoginResOrBuilder();
   }
   /**
    * Protobuf type {@code com.zserver.proto.Body}
@@ -898,6 +953,32 @@ public final class MsgOuterClass {
                 connetRes_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              com.zserver.proto.MsgOuterClass.LoginReq.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = loginReq_.toBuilder();
+              }
+              loginReq_ = input.readMessage(com.zserver.proto.MsgOuterClass.LoginReq.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(loginReq_);
+                loginReq_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              com.zserver.proto.MsgOuterClass.LoginRes.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = loginRes_.toBuilder();
+              }
+              loginRes_ = input.readMessage(com.zserver.proto.MsgOuterClass.LoginRes.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(loginRes_);
+                loginRes_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
               break;
             }
           }
@@ -968,12 +1049,66 @@ public final class MsgOuterClass {
       return connetRes_ == null ? com.zserver.proto.MsgOuterClass.ConnetRes.getDefaultInstance() : connetRes_;
     }
 
+    public static final int LOGINREQ_FIELD_NUMBER = 3;
+    private com.zserver.proto.MsgOuterClass.LoginReq loginReq_;
+    /**
+     * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+     */
+    public boolean hasLoginReq() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+     */
+    public com.zserver.proto.MsgOuterClass.LoginReq getLoginReq() {
+      return loginReq_ == null ? com.zserver.proto.MsgOuterClass.LoginReq.getDefaultInstance() : loginReq_;
+    }
+    /**
+     * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+     */
+    public com.zserver.proto.MsgOuterClass.LoginReqOrBuilder getLoginReqOrBuilder() {
+      return loginReq_ == null ? com.zserver.proto.MsgOuterClass.LoginReq.getDefaultInstance() : loginReq_;
+    }
+
+    public static final int LOGINRES_FIELD_NUMBER = 4;
+    private com.zserver.proto.MsgOuterClass.LoginRes loginRes_;
+    /**
+     * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+     */
+    public boolean hasLoginRes() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+     */
+    public com.zserver.proto.MsgOuterClass.LoginRes getLoginRes() {
+      return loginRes_ == null ? com.zserver.proto.MsgOuterClass.LoginRes.getDefaultInstance() : loginRes_;
+    }
+    /**
+     * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+     */
+    public com.zserver.proto.MsgOuterClass.LoginResOrBuilder getLoginResOrBuilder() {
+      return loginRes_ == null ? com.zserver.proto.MsgOuterClass.LoginRes.getDefaultInstance() : loginRes_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (hasLoginReq()) {
+        if (!getLoginReq().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasLoginRes()) {
+        if (!getLoginRes().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -985,6 +1120,12 @@ public final class MsgOuterClass {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(2, getConnetRes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, getLoginReq());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, getLoginRes());
       }
       unknownFields.writeTo(output);
     }
@@ -1001,6 +1142,14 @@ public final class MsgOuterClass {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getConnetRes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getLoginReq());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getLoginRes());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1112,6 +1261,8 @@ public final class MsgOuterClass {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getConnetReqFieldBuilder();
           getConnetResFieldBuilder();
+          getLoginReqFieldBuilder();
+          getLoginResFieldBuilder();
         }
       }
       public Builder clear() {
@@ -1128,6 +1279,18 @@ public final class MsgOuterClass {
           connetResBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
+        if (loginReqBuilder_ == null) {
+          loginReq_ = null;
+        } else {
+          loginReqBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        if (loginResBuilder_ == null) {
+          loginRes_ = null;
+        } else {
+          loginResBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -1168,6 +1331,22 @@ public final class MsgOuterClass {
         } else {
           result.connetRes_ = connetResBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (loginReqBuilder_ == null) {
+          result.loginReq_ = loginReq_;
+        } else {
+          result.loginReq_ = loginReqBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (loginResBuilder_ == null) {
+          result.loginRes_ = loginRes_;
+        } else {
+          result.loginRes_ = loginResBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1190,12 +1369,28 @@ public final class MsgOuterClass {
         if (other.hasConnetRes()) {
           mergeConnetRes(other.getConnetRes());
         }
+        if (other.hasLoginReq()) {
+          mergeLoginReq(other.getLoginReq());
+        }
+        if (other.hasLoginRes()) {
+          mergeLoginRes(other.getLoginRes());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
       public final boolean isInitialized() {
+        if (hasLoginReq()) {
+          if (!getLoginReq().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasLoginRes()) {
+          if (!getLoginRes().isInitialized()) {
+            return false;
+          }
+        }
         return true;
       }
 
@@ -1454,6 +1649,242 @@ public final class MsgOuterClass {
         return connetResBuilder_;
       }
 
+      private com.zserver.proto.MsgOuterClass.LoginReq loginReq_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.zserver.proto.MsgOuterClass.LoginReq, com.zserver.proto.MsgOuterClass.LoginReq.Builder, com.zserver.proto.MsgOuterClass.LoginReqOrBuilder> loginReqBuilder_;
+      /**
+       * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+       */
+      public boolean hasLoginReq() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+       */
+      public com.zserver.proto.MsgOuterClass.LoginReq getLoginReq() {
+        if (loginReqBuilder_ == null) {
+          return loginReq_ == null ? com.zserver.proto.MsgOuterClass.LoginReq.getDefaultInstance() : loginReq_;
+        } else {
+          return loginReqBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+       */
+      public Builder setLoginReq(com.zserver.proto.MsgOuterClass.LoginReq value) {
+        if (loginReqBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          loginReq_ = value;
+          onChanged();
+        } else {
+          loginReqBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+       */
+      public Builder setLoginReq(
+          com.zserver.proto.MsgOuterClass.LoginReq.Builder builderForValue) {
+        if (loginReqBuilder_ == null) {
+          loginReq_ = builderForValue.build();
+          onChanged();
+        } else {
+          loginReqBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+       */
+      public Builder mergeLoginReq(com.zserver.proto.MsgOuterClass.LoginReq value) {
+        if (loginReqBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              loginReq_ != null &&
+              loginReq_ != com.zserver.proto.MsgOuterClass.LoginReq.getDefaultInstance()) {
+            loginReq_ =
+              com.zserver.proto.MsgOuterClass.LoginReq.newBuilder(loginReq_).mergeFrom(value).buildPartial();
+          } else {
+            loginReq_ = value;
+          }
+          onChanged();
+        } else {
+          loginReqBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+       */
+      public Builder clearLoginReq() {
+        if (loginReqBuilder_ == null) {
+          loginReq_ = null;
+          onChanged();
+        } else {
+          loginReqBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+       */
+      public com.zserver.proto.MsgOuterClass.LoginReq.Builder getLoginReqBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getLoginReqFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+       */
+      public com.zserver.proto.MsgOuterClass.LoginReqOrBuilder getLoginReqOrBuilder() {
+        if (loginReqBuilder_ != null) {
+          return loginReqBuilder_.getMessageOrBuilder();
+        } else {
+          return loginReq_ == null ?
+              com.zserver.proto.MsgOuterClass.LoginReq.getDefaultInstance() : loginReq_;
+        }
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginReq loginReq = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.zserver.proto.MsgOuterClass.LoginReq, com.zserver.proto.MsgOuterClass.LoginReq.Builder, com.zserver.proto.MsgOuterClass.LoginReqOrBuilder> 
+          getLoginReqFieldBuilder() {
+        if (loginReqBuilder_ == null) {
+          loginReqBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.zserver.proto.MsgOuterClass.LoginReq, com.zserver.proto.MsgOuterClass.LoginReq.Builder, com.zserver.proto.MsgOuterClass.LoginReqOrBuilder>(
+                  getLoginReq(),
+                  getParentForChildren(),
+                  isClean());
+          loginReq_ = null;
+        }
+        return loginReqBuilder_;
+      }
+
+      private com.zserver.proto.MsgOuterClass.LoginRes loginRes_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.zserver.proto.MsgOuterClass.LoginRes, com.zserver.proto.MsgOuterClass.LoginRes.Builder, com.zserver.proto.MsgOuterClass.LoginResOrBuilder> loginResBuilder_;
+      /**
+       * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+       */
+      public boolean hasLoginRes() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+       */
+      public com.zserver.proto.MsgOuterClass.LoginRes getLoginRes() {
+        if (loginResBuilder_ == null) {
+          return loginRes_ == null ? com.zserver.proto.MsgOuterClass.LoginRes.getDefaultInstance() : loginRes_;
+        } else {
+          return loginResBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+       */
+      public Builder setLoginRes(com.zserver.proto.MsgOuterClass.LoginRes value) {
+        if (loginResBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          loginRes_ = value;
+          onChanged();
+        } else {
+          loginResBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+       */
+      public Builder setLoginRes(
+          com.zserver.proto.MsgOuterClass.LoginRes.Builder builderForValue) {
+        if (loginResBuilder_ == null) {
+          loginRes_ = builderForValue.build();
+          onChanged();
+        } else {
+          loginResBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+       */
+      public Builder mergeLoginRes(com.zserver.proto.MsgOuterClass.LoginRes value) {
+        if (loginResBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              loginRes_ != null &&
+              loginRes_ != com.zserver.proto.MsgOuterClass.LoginRes.getDefaultInstance()) {
+            loginRes_ =
+              com.zserver.proto.MsgOuterClass.LoginRes.newBuilder(loginRes_).mergeFrom(value).buildPartial();
+          } else {
+            loginRes_ = value;
+          }
+          onChanged();
+        } else {
+          loginResBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+       */
+      public Builder clearLoginRes() {
+        if (loginResBuilder_ == null) {
+          loginRes_ = null;
+          onChanged();
+        } else {
+          loginResBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+       */
+      public com.zserver.proto.MsgOuterClass.LoginRes.Builder getLoginResBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getLoginResFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+       */
+      public com.zserver.proto.MsgOuterClass.LoginResOrBuilder getLoginResOrBuilder() {
+        if (loginResBuilder_ != null) {
+          return loginResBuilder_.getMessageOrBuilder();
+        } else {
+          return loginRes_ == null ?
+              com.zserver.proto.MsgOuterClass.LoginRes.getDefaultInstance() : loginRes_;
+        }
+      }
+      /**
+       * <code>optional .com.zserver.proto.LoginRes loginRes = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.zserver.proto.MsgOuterClass.LoginRes, com.zserver.proto.MsgOuterClass.LoginRes.Builder, com.zserver.proto.MsgOuterClass.LoginResOrBuilder> 
+          getLoginResFieldBuilder() {
+        if (loginResBuilder_ == null) {
+          loginResBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.zserver.proto.MsgOuterClass.LoginRes, com.zserver.proto.MsgOuterClass.LoginRes.Builder, com.zserver.proto.MsgOuterClass.LoginResOrBuilder>(
+                  getLoginRes(),
+                  getParentForChildren(),
+                  isClean());
+          loginRes_ = null;
+        }
+        return loginResBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.zserver.proto.Body)
     }
 
@@ -1496,6 +1927,975 @@ public final class MsgOuterClass {
     }
 
     public com.zserver.proto.MsgOuterClass.Body getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface LoginReqOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.zserver.proto.LoginReq)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int64 userid = 1;</code>
+     */
+    boolean hasUserid();
+    /**
+     * <code>required int64 userid = 1;</code>
+     */
+    long getUserid();
+
+    /**
+     * <code>required string passwd = 2;</code>
+     */
+    boolean hasPasswd();
+    /**
+     * <code>required string passwd = 2;</code>
+     */
+    java.lang.String getPasswd();
+    /**
+     * <code>required string passwd = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getPasswdBytes();
+  }
+  /**
+   * Protobuf type {@code com.zserver.proto.LoginReq}
+   */
+  public  static final class LoginReq extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:com.zserver.proto.LoginReq)
+      LoginReqOrBuilder {
+    // Use LoginReq.newBuilder() to construct.
+    private LoginReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private LoginReq() {
+      userid_ = 0L;
+      passwd_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private LoginReq(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              userid_ = input.readInt64();
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              passwd_ = bs;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.zserver.proto.MsgOuterClass.internal_static_com_zserver_proto_LoginReq_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.zserver.proto.MsgOuterClass.internal_static_com_zserver_proto_LoginReq_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.zserver.proto.MsgOuterClass.LoginReq.class, com.zserver.proto.MsgOuterClass.LoginReq.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int USERID_FIELD_NUMBER = 1;
+    private long userid_;
+    /**
+     * <code>required int64 userid = 1;</code>
+     */
+    public boolean hasUserid() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int64 userid = 1;</code>
+     */
+    public long getUserid() {
+      return userid_;
+    }
+
+    public static final int PASSWD_FIELD_NUMBER = 2;
+    private volatile java.lang.Object passwd_;
+    /**
+     * <code>required string passwd = 2;</code>
+     */
+    public boolean hasPasswd() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string passwd = 2;</code>
+     */
+    public java.lang.String getPasswd() {
+      java.lang.Object ref = passwd_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          passwd_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string passwd = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPasswdBytes() {
+      java.lang.Object ref = passwd_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        passwd_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasUserid()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPasswd()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt64(1, userid_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, passwd_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, userid_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, passwd_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.zserver.proto.MsgOuterClass.LoginReq parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginReq parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginReq parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginReq parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginReq parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginReq parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginReq parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginReq parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginReq parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginReq parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.zserver.proto.MsgOuterClass.LoginReq prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.zserver.proto.LoginReq}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.zserver.proto.LoginReq)
+        com.zserver.proto.MsgOuterClass.LoginReqOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.zserver.proto.MsgOuterClass.internal_static_com_zserver_proto_LoginReq_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.zserver.proto.MsgOuterClass.internal_static_com_zserver_proto_LoginReq_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.zserver.proto.MsgOuterClass.LoginReq.class, com.zserver.proto.MsgOuterClass.LoginReq.Builder.class);
+      }
+
+      // Construct using com.zserver.proto.MsgOuterClass.LoginReq.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        userid_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        passwd_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.zserver.proto.MsgOuterClass.internal_static_com_zserver_proto_LoginReq_descriptor;
+      }
+
+      public com.zserver.proto.MsgOuterClass.LoginReq getDefaultInstanceForType() {
+        return com.zserver.proto.MsgOuterClass.LoginReq.getDefaultInstance();
+      }
+
+      public com.zserver.proto.MsgOuterClass.LoginReq build() {
+        com.zserver.proto.MsgOuterClass.LoginReq result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.zserver.proto.MsgOuterClass.LoginReq buildPartial() {
+        com.zserver.proto.MsgOuterClass.LoginReq result = new com.zserver.proto.MsgOuterClass.LoginReq(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.userid_ = userid_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.passwd_ = passwd_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.zserver.proto.MsgOuterClass.LoginReq) {
+          return mergeFrom((com.zserver.proto.MsgOuterClass.LoginReq)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.zserver.proto.MsgOuterClass.LoginReq other) {
+        if (other == com.zserver.proto.MsgOuterClass.LoginReq.getDefaultInstance()) return this;
+        if (other.hasUserid()) {
+          setUserid(other.getUserid());
+        }
+        if (other.hasPasswd()) {
+          bitField0_ |= 0x00000002;
+          passwd_ = other.passwd_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasUserid()) {
+          return false;
+        }
+        if (!hasPasswd()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.zserver.proto.MsgOuterClass.LoginReq parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.zserver.proto.MsgOuterClass.LoginReq) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private long userid_ ;
+      /**
+       * <code>required int64 userid = 1;</code>
+       */
+      public boolean hasUserid() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int64 userid = 1;</code>
+       */
+      public long getUserid() {
+        return userid_;
+      }
+      /**
+       * <code>required int64 userid = 1;</code>
+       */
+      public Builder setUserid(long value) {
+        bitField0_ |= 0x00000001;
+        userid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 userid = 1;</code>
+       */
+      public Builder clearUserid() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        userid_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object passwd_ = "";
+      /**
+       * <code>required string passwd = 2;</code>
+       */
+      public boolean hasPasswd() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string passwd = 2;</code>
+       */
+      public java.lang.String getPasswd() {
+        java.lang.Object ref = passwd_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            passwd_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string passwd = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPasswdBytes() {
+        java.lang.Object ref = passwd_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          passwd_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string passwd = 2;</code>
+       */
+      public Builder setPasswd(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        passwd_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string passwd = 2;</code>
+       */
+      public Builder clearPasswd() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        passwd_ = getDefaultInstance().getPasswd();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string passwd = 2;</code>
+       */
+      public Builder setPasswdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        passwd_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.zserver.proto.LoginReq)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.zserver.proto.LoginReq)
+    private static final com.zserver.proto.MsgOuterClass.LoginReq DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.zserver.proto.MsgOuterClass.LoginReq();
+    }
+
+    public static com.zserver.proto.MsgOuterClass.LoginReq getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<LoginReq>
+        PARSER = new com.google.protobuf.AbstractParser<LoginReq>() {
+      public LoginReq parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new LoginReq(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<LoginReq> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<LoginReq> getParserForType() {
+      return PARSER;
+    }
+
+    public com.zserver.proto.MsgOuterClass.LoginReq getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface LoginResOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.zserver.proto.LoginRes)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required bool succ = 1;</code>
+     */
+    boolean hasSucc();
+    /**
+     * <code>required bool succ = 1;</code>
+     */
+    boolean getSucc();
+  }
+  /**
+   * Protobuf type {@code com.zserver.proto.LoginRes}
+   */
+  public  static final class LoginRes extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:com.zserver.proto.LoginRes)
+      LoginResOrBuilder {
+    // Use LoginRes.newBuilder() to construct.
+    private LoginRes(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private LoginRes() {
+      succ_ = false;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private LoginRes(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              succ_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.zserver.proto.MsgOuterClass.internal_static_com_zserver_proto_LoginRes_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.zserver.proto.MsgOuterClass.internal_static_com_zserver_proto_LoginRes_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.zserver.proto.MsgOuterClass.LoginRes.class, com.zserver.proto.MsgOuterClass.LoginRes.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int SUCC_FIELD_NUMBER = 1;
+    private boolean succ_;
+    /**
+     * <code>required bool succ = 1;</code>
+     */
+    public boolean hasSucc() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required bool succ = 1;</code>
+     */
+    public boolean getSucc() {
+      return succ_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasSucc()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBool(1, succ_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, succ_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.zserver.proto.MsgOuterClass.LoginRes parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginRes parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginRes parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginRes parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginRes parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginRes parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginRes parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginRes parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginRes parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.zserver.proto.MsgOuterClass.LoginRes parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.zserver.proto.MsgOuterClass.LoginRes prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.zserver.proto.LoginRes}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.zserver.proto.LoginRes)
+        com.zserver.proto.MsgOuterClass.LoginResOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.zserver.proto.MsgOuterClass.internal_static_com_zserver_proto_LoginRes_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.zserver.proto.MsgOuterClass.internal_static_com_zserver_proto_LoginRes_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.zserver.proto.MsgOuterClass.LoginRes.class, com.zserver.proto.MsgOuterClass.LoginRes.Builder.class);
+      }
+
+      // Construct using com.zserver.proto.MsgOuterClass.LoginRes.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        succ_ = false;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.zserver.proto.MsgOuterClass.internal_static_com_zserver_proto_LoginRes_descriptor;
+      }
+
+      public com.zserver.proto.MsgOuterClass.LoginRes getDefaultInstanceForType() {
+        return com.zserver.proto.MsgOuterClass.LoginRes.getDefaultInstance();
+      }
+
+      public com.zserver.proto.MsgOuterClass.LoginRes build() {
+        com.zserver.proto.MsgOuterClass.LoginRes result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.zserver.proto.MsgOuterClass.LoginRes buildPartial() {
+        com.zserver.proto.MsgOuterClass.LoginRes result = new com.zserver.proto.MsgOuterClass.LoginRes(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.succ_ = succ_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.zserver.proto.MsgOuterClass.LoginRes) {
+          return mergeFrom((com.zserver.proto.MsgOuterClass.LoginRes)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.zserver.proto.MsgOuterClass.LoginRes other) {
+        if (other == com.zserver.proto.MsgOuterClass.LoginRes.getDefaultInstance()) return this;
+        if (other.hasSucc()) {
+          setSucc(other.getSucc());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasSucc()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.zserver.proto.MsgOuterClass.LoginRes parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.zserver.proto.MsgOuterClass.LoginRes) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private boolean succ_ ;
+      /**
+       * <code>required bool succ = 1;</code>
+       */
+      public boolean hasSucc() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required bool succ = 1;</code>
+       */
+      public boolean getSucc() {
+        return succ_;
+      }
+      /**
+       * <code>required bool succ = 1;</code>
+       */
+      public Builder setSucc(boolean value) {
+        bitField0_ |= 0x00000001;
+        succ_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool succ = 1;</code>
+       */
+      public Builder clearSucc() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        succ_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.zserver.proto.LoginRes)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.zserver.proto.LoginRes)
+    private static final com.zserver.proto.MsgOuterClass.LoginRes DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.zserver.proto.MsgOuterClass.LoginRes();
+    }
+
+    public static com.zserver.proto.MsgOuterClass.LoginRes getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<LoginRes>
+        PARSER = new com.google.protobuf.AbstractParser<LoginRes>() {
+      public LoginRes parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new LoginRes(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    public static com.google.protobuf.Parser<LoginRes> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<LoginRes> getParserForType() {
+      return PARSER;
+    }
+
+    public com.zserver.proto.MsgOuterClass.LoginRes getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2382,6 +3782,16 @@ public final class MsgOuterClass {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_zserver_proto_Body_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_zserver_proto_LoginReq_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_zserver_proto_LoginReq_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_zserver_proto_LoginRes_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_zserver_proto_LoginRes_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_zserver_proto_ConnetReq_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -2403,15 +3813,20 @@ public final class MsgOuterClass {
       "\n\tmsg.proto\022\021com.zserver.proto\"d\n\003Msg\022\'\n" +
       "\005msgid\030\001 \001(\0162\030.com.zserver.proto.MsgId\022\r" +
       "\n\005seqid\030\002 \001(\005\022%\n\004body\030\003 \001(\0132\027.com.zserve" +
-      "r.proto.Body\"h\n\004Body\022/\n\tconnetReq\030\001 \001(\0132" +
-      "\034.com.zserver.proto.ConnetReq\022/\n\tconnetR" +
-      "es\030\002 \001(\0132\034.com.zserver.proto.ConnetRes\"#" +
-      "\n\tConnetReq\022\n\n\002t1\030\001 \001(\005\022\n\n\002t2\030\002 \001(\005\"\035\n\tC" +
-      "onnetRes\022\020\n\010platform\030\001 \001(\005*\223\001\n\005MsgId\022\027\n\n" +
-      "MSG_ID_REQ\020\377\377\377\377\377\377\377\377\377\001\022\027\n\nMSG_ID_RES\020\376\377\377\377" +
-      "\377\377\377\377\377\001\022\025\n\021MSG_ID_CONNET_REQ\020\001\022\025\n\021MSG_ID_",
-      "CONNET_RES\020\002\022\024\n\020MSG_ID_HEART_REQ\020\003\022\024\n\020MS" +
-      "G_ID_HEART_RES\020\004"
+      "r.proto.Body\"\306\001\n\004Body\022/\n\tconnetReq\030\001 \001(\013" +
+      "2\034.com.zserver.proto.ConnetReq\022/\n\tconnet" +
+      "Res\030\002 \001(\0132\034.com.zserver.proto.ConnetRes\022" +
+      "-\n\010loginReq\030\003 \001(\0132\033.com.zserver.proto.Lo" +
+      "ginReq\022-\n\010loginRes\030\004 \001(\0132\033.com.zserver.p" +
+      "roto.LoginRes\"*\n\010LoginReq\022\016\n\006userid\030\001 \002(" +
+      "\003\022\016\n\006passwd\030\002 \002(\t\"\030\n\010LoginRes\022\014\n\004succ\030\001 ",
+      "\002(\010\"#\n\tConnetReq\022\n\n\002t1\030\001 \001(\005\022\n\n\002t2\030\002 \001(\005" +
+      "\"\035\n\tConnetRes\022\020\n\010platform\030\001 \001(\005*\277\001\n\005MsgI" +
+      "d\022\027\n\nMSG_ID_REQ\020\377\377\377\377\377\377\377\377\377\001\022\027\n\nMSG_ID_RES" +
+      "\020\376\377\377\377\377\377\377\377\377\001\022\025\n\021MSG_ID_CONNET_REQ\020\001\022\025\n\021MS" +
+      "G_ID_CONNET_RES\020\002\022\024\n\020MSG_ID_HEART_REQ\020\003\022" +
+      "\024\n\020MSG_ID_HEART_RES\020\004\022\024\n\020MSG_ID_LOGIN_RE" +
+      "Q\020\005\022\024\n\020MSG_ID_LOGIN_RES\020\006"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2436,15 +3851,27 @@ public final class MsgOuterClass {
     internal_static_com_zserver_proto_Body_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_com_zserver_proto_Body_descriptor,
-        new java.lang.String[] { "ConnetReq", "ConnetRes", });
-    internal_static_com_zserver_proto_ConnetReq_descriptor =
+        new java.lang.String[] { "ConnetReq", "ConnetRes", "LoginReq", "LoginRes", });
+    internal_static_com_zserver_proto_LoginReq_descriptor =
       getDescriptor().getMessageTypes().get(2);
+    internal_static_com_zserver_proto_LoginReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_com_zserver_proto_LoginReq_descriptor,
+        new java.lang.String[] { "Userid", "Passwd", });
+    internal_static_com_zserver_proto_LoginRes_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_com_zserver_proto_LoginRes_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_com_zserver_proto_LoginRes_descriptor,
+        new java.lang.String[] { "Succ", });
+    internal_static_com_zserver_proto_ConnetReq_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_com_zserver_proto_ConnetReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_com_zserver_proto_ConnetReq_descriptor,
         new java.lang.String[] { "T1", "T2", });
     internal_static_com_zserver_proto_ConnetRes_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_com_zserver_proto_ConnetRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_com_zserver_proto_ConnetRes_descriptor,

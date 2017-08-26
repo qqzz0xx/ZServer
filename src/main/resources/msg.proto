@@ -15,8 +15,12 @@ enum MsgId
 
     MSG_ID_CONNET_REQ = 1;
     MSG_ID_CONNET_RES = 2;
+
     MSG_ID_HEART_REQ = 3;
     MSG_ID_HEART_RES = 4;
+
+    MSG_ID_LOGIN_REQ = 5;
+    MSG_ID_LOGIN_RES = 6;
 }
 
 
@@ -24,6 +28,20 @@ message Body
 {
     optional ConnetReq connetReq = 1;
     optional ConnetRes connetRes = 2;
+    optional LoginReq loginReq = 3;
+    optional LoginRes loginRes = 4;
+
+}
+
+message LoginReq
+{
+    required int64 userid = 1;
+    required string passwd = 2;
+}
+
+message LoginRes
+{
+    required bool succ = 1;
 }
 
 message ConnetReq

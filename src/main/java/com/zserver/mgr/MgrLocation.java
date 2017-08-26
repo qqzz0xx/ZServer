@@ -8,6 +8,7 @@ public enum  MgrLocation {
 
     private ChannelMgr channelMgr = new ChannelMgr();
     private MessageMgr messageMgr = new MessageMgr();
+    private DBMgr dbMgr = new DBMgr();
 
     public ChannelMgr getChannelMgr() {
         return channelMgr;
@@ -15,5 +16,9 @@ public enum  MgrLocation {
 
     public MessageMgr getMessageMgr() {
         return messageMgr;
+    }
+
+    public DBMgr getDbMgr() {
+        return dbMgr;
     }
 }
