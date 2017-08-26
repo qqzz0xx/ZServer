@@ -63,7 +63,7 @@ public class DBMgr {
     private <T> T FindTable(Object key,  String keyName, String table, Class<T> tClass){
         String redisKey = table+"@"+key;
         String redisVal = redisClient.Get(redisKey);
-        Document doc = null;
+        Document doc;
         if (redisVal != null) {
             doc = Document.parse(redisVal);
             return DBClient.DocToBean(doc, tClass);
