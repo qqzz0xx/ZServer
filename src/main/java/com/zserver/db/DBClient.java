@@ -13,7 +13,7 @@ import java.lang.reflect.Field;
  */
 public class DBClient {
 
-    MongoClient Connet() {
+    public MongoClient Connet() {
         client = new MongoClient(dburl);
         return  client;
     }
